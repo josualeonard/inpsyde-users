@@ -2,4 +2,5 @@
 
 
 # inpsyde-users
-Load user list and details from API call
+A Wordpress plugin to load and show user list and details from API call.
+The page is shown using custom URI that can be set up on the wordpress settings page.
