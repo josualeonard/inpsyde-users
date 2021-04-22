@@ -1,0 +1,8 @@
+{
+    "phpSniffer.snippetExcludeSniffs": [
+
+    ],
+    "phpSniffer.standard": "vendor\\inpsyde\\php-coding-standards\\Inpsyde\\ruleset.xml",
+    "phpSniffer.executablesFolder": "vendor\\bin\\",
+    "phpSniffer.autoDetect": true,
+}

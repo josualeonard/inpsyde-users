@@ -1,0 +1,237 @@
+/* Variables
+================================== */
+$bw: 1px;  // border width
+$bgColor: #cfd9d9;
+$lightColor: #f3eccc;
+
+/* Tables
+================================== */
+.title {
+    margin: 20px 0;
+    border-bottom: 10px solid $bgColor;
+    color: darken($bgColor,40%);
+    line-height: 20px;
+}
+.table {
+    border: 1px solid darken($bgColor,30%);
+    border-radius: 4px;
+    &.loading {
+        opacity: 0.5;
+    }
+}
+.row {
+    margin: 0;
+    &:nth-child(even) {background-color: #ffffff}
+    &:nth-child(odd) {background-color: lighten($bgColor,10%)}
+    &:last-child {
+        border-radius: 0 0 4px 4px;
+        .col-label { 
+            border: 0;
+        }
+        .col-content {
+            border: 0;
+        }
+    }
+    &.head {
+        background-color: darken($bgColor,10%);
+        font-weight: bold;
+        color: white;
+    }
+    &:hover {
+        background-color: $lightColor;
+    }
+    &:first-child {
+        &:hover {
+            background-color: darken($bgColor,20%);
+        }
+    }
+}
+.cell {
+    font-size: 16px;
+    padding: 5px 10px;
+    > h1, > h2, > h3, > h4, > h5, > h6 { margin: 0; }
+    &.user-id {
+        width: 5%;
+    }
+    &.user-name {
+        width: 30%;
+    }
+    &.user-username {
+        width: 25%;
+    }
+    &.user-email {
+        width: 40%;
+    }
+    &.col-label { 
+        background-color: darken($bgColor,30%);
+        font-weight: bold;
+        color: white;
+        width: 15%;
+        border-bottom: 1px solid lighten($bgColor,10%);
+    }
+    &.col-content {
+        width: 85%;
+        border-bottom: 1px solid $bgColor;
+    }
+    a {
+        text-decoration: none;
+        color: darken($bgColor,40%);
+        &:hover {
+            color: darken($lightColor,30%);
+        }
+    }
+}
+
+/* Cell styles
+================================== */
+.users-table-cell-head {
+    background-color: slategrey;
+    border-color: darken($bgColor,10%);
+    color: white; > h1, > h2, > h3, > h4, > h5, > h6 { color: white; }
+}
+
+.btn {
+    &.btn-primary {
+        background-color: darken($bgColor,30%);
+        border-color: darken($bgColor,30%);
+        &:hover,
+        &:active {
+            background-color: darken($bgColor,10%);
+            border-color: darken($bgColor,10%);
+        }
+    }
+    &.btn-close {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
+
+.fly-container {
+    background: #ffffff;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    padding: 20px;
+    margin: 0 -20px;
+    position: absolute;
+    top: 120px;
+    width: 1150px;
+    min-height: 300px;
+}
+
+@media only screen and (max-width: 1199px) {
+    .fly-container {
+        width: 960px;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .cell {
+        &.user-id {
+            width: 5%;
+        }
+        &.user-name {
+            width: 35%;
+        }
+        &.user-username {
+            width: 25%;
+        }
+        &.user-email {
+            width: 35%;
+        }
+    }
+    .fly-container {
+        width: 730px;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .cell {
+        padding: 0 5px;
+        &.user-id {
+            width: 10%;
+        }
+        &.user-name {
+            width: 45%;
+        }
+        &.user-username {
+            width: 45%;
+        }
+        &.user-email {
+            display: none;
+        }
+        &.col-label {
+            width: 25%;
+        }
+        &.col-content {
+            width: 75%;
+        }
+    }
+    .fly-container {
+        width: 550px;
+    }
+}
+@media only screen and (max-width: 575px) {
+    .fly-container {
+        margin: 0 -15px;
+        width: 100%;
+    }
+}
+
+.lds-ellipsis {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    left: 50%;
+    margin-left: -40px;
+    top: 30%;
+    z-index: 1;
+  }
+  .lds-ellipsis div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: darken($bgColor,10%);
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+  }
+  @keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(24px, 0);
+    }
+  }
