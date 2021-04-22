@@ -171,7 +171,16 @@ class Users extends React.Component {
         let UserElm = null;
         if(this.state.loaded>0 && this.state.hasOwnProperty('user') && this.state.user) {
             let id = this.state.loaded;
-            let details = ['ID', 'Name', 'Username', 'Email', 'Address', 'Phone', 'Website', 'Company'];
+            let details = [
+                {name: 'ID', slug: 'id'}, 
+                {name: 'Name', slug: 'name'}, 
+                {name: 'Username', slug: 'username'}, 
+                {name: 'Email', slug: 'email'},
+                {name: 'Address', slug: 'fullAddress'}, 
+                {name: 'Phone', slug: 'phone'}, 
+                {name: 'Website', slug: 'website'}, 
+                {name: 'Company', slug: 'companyName'}
+            ];
             let user = this.state.user;
             let userData = user;
             let address = user.hasOwnProperty('address')?user.address:{};
@@ -179,9 +188,9 @@ class Users extends React.Component {
             let suite = address.hasOwnProperty('suite')?address.suite:'';
             let city = address.hasOwnProperty('city')?address.city:'';
             let zipcode = address.hasOwnProperty('zipcode')?address.zipcode:'';
-            userData.address = street+' '+suite+' '+city+' '+zipcode;
+            userData.fullAddress = street+' '+suite+' '+city+' '+zipcode;
             let company = user.hasOwnProperty('company')?user.company:{};
-            userData.company = company.hasOwnProperty('name')?company.name:'';
+            userData.companyName = company.hasOwnProperty('name')?company.name:'';
             let DetailsElm = details.map((value, i) => {
                 return React.createElement('div', {
                     key: 'userrow'+value,
@@ -189,11 +198,11 @@ class Users extends React.Component {
                 }, [
                     React.createElement('div', 
                         {key: 'user'+id+value+'label', className: 'cell col-label'}, 
-                        value
+                        value.name
                     ),
                     React.createElement('div', 
                         {key: 'user'+id+value+'content', className: 'cell col-content'}, 
-                        userData[value.toLowerCase()]
+                        userData[value.slug]
                     )
                 ]);
             });

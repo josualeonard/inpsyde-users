@@ -5,7 +5,7 @@ namespace InpsydeUsers;
 class UsersAPI
 {
     private $url = "http://jsonplaceholder.typicode.com";
-    private $usersEndpoint = "/users";
+    private $usersEndpoint = "/users/";
     private $timeout = 30; // Seconds
 
     /**
@@ -56,7 +56,9 @@ class UsersAPI
         } catch (\GuzzleHttp\Exception\ClientException $exception) {
             $result['code'] = $exception->getCode();
             $result['message'] = $exception->getMessage();
-            if ($result['code']===404) $result['message'] = 'Endpoint not found';
+            if ($result['code']===404) {
+                $result['message'] = 'Endpoint not found';
+            }
         } catch (\GuzzleHttp\Exception\ConnectException $exception) {
             $result['code'] = $exception->getCode();
             $result['message'] = "Connection timeout";
@@ -86,7 +88,7 @@ class UsersAPI
             $client = new \GuzzleHttp\Client();
             $res = $client->request(
                 'GET',
-                $this->url.$this->usersEndpoint."/".$id,
+                $this->url.$this->usersEndpoint.$id,
                 [
                     'connect_timeout' => $this->timeout,
                     'headers' => [

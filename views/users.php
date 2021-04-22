@@ -73,11 +73,11 @@
             </div>
           </div>
                 <?php }
-            } else { ?>
+          } else { ?>
           <div class="row">
             <div class="cell"><?=($code!==200)?esc_html($message):'Nothing to show'?></div>
           </div>
-            <?php } ?>
+          <?php } ?>
           </div>
         </div>
       </div>
