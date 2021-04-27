@@ -10,7 +10,7 @@
  * Version:           1.0.0
  * Licence:           MIT
  * License URI:       ./LICENSE
- * Author URI:        https://github.com/josualeonard/inpsyde-users
+ * Author URI:        https://github.com/josualeonard
  * Last Change:       2021-04-19
  */
 
@@ -30,6 +30,17 @@ if (!class_exists('InpsydeUsers\Plugin')) {
 if (!function_exists('get_plugin_data')) {
     require_once ABSPATH.'/wp-admin/includes/plugin.php';
 }
+$pluginData = get_plugin_data(__FILE__);
+
+$config = [
+    'name' => $pluginData['Name'],
+    'page' => $pluginData['TextDomain'],
+];
+
+$uri = new InpsydeUsers\URI();
+$settings = new InpsydeUsers\Settings($config, $uri);
+$api = new InpsydeUsers\UsersAPI();
+$routing = new InpsydeUsers\Routing($uri, $api);
 
 // Pass plugin data to init
-\InpsydeUsers\Plugin::init(get_plugin_data(__FILE__));
+new InpsydeUsers\Plugin($settings, $routing);

@@ -9,7 +9,9 @@ use \InpsydeUsers\UsersAPI;
 
 class ApiCallTest extends TestCase
 {
+    // This class object
     private $api;
+    
     public function setUp(): void
     {
         Monkey\setUp();

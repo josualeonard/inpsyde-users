@@ -12,7 +12,15 @@ I'm using Bedrock for the Wordpress package. I upgrade it to latest version.
 
 ### Namespace, Classes, and File Structure
 
-I have arranged file structure based on it's type and functions. Using namespace for php codes. `Plugin.php` for the plugin functionality, and `UsersAPI.php` for handling API call. All of these files are loaded using autoload from main plugin file on plugin root directory.
+I have arranged file structure based on it's type and functions. Using namespace for php codes.
+  * `Plugin.php` for the plugin base
+  * `Settings.php` for plugin admin menu containing plugin settings
+  * `Routing.php` for handling frontend url stuff like rewrite, catching match URI, load template
+  * `URI.php` is helper class to handle custom URI property
+  * `UsersAPI.php` for handling API call
+All of these files are loaded using autoload from main plugin file on plugin root directory.
+
+*PS. I have split plugin class into several classes and use dependency injection because too many methods*
 
 ### Admin Page
 
